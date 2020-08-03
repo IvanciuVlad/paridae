@@ -1,14 +1,20 @@
 import React from "react";
 import Spinner from "./Spinner";
 
-
 class LocationFinder extends React.Component {
-    state = {lat: null, long: null, errorMessage: ''}
+    //state = {lat: null, long: null, errorMessage: ''}
+
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
 
     componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
             (position => {this.setState({lat: position.coords.latitude, long: position.coords.longitude})}),
             (err) => {this.setState({errorMessage: err.message})});
+        
     }
 
     renderContent() {
@@ -22,8 +28,8 @@ class LocationFinder extends React.Component {
         if ((this.state.lat && this.state.long) && !this.state.errorMessage) {
             return (
                 <div>
-                    <h1>{this.state.lat}</h1>
-                    <h1>{this.state.long}</h1>
+                    <h3>{this.state.lat}</h3>
+                    <h3>{this.state.long}</h3>
                 </div>
             );
         }
@@ -32,8 +38,10 @@ class LocationFinder extends React.Component {
 
     render() {
         return (
-            <div className="border red">
+            <div>
                 {this.renderContent()}
+                <h1>Weather data</h1>
+                {() => this.props.weatherRequest(this.state.lat, this.state.long)}
             </div>
         );
     }
