@@ -1,5 +1,8 @@
 import React from "react";
 
+// Some of the elements may not be returned by the API, since they might not be present in the object returned,
+// we have to check if they exist before rendering them
+
 const renderGust = (wind) => {
     if (wind.gust) {
         return (
@@ -46,11 +49,11 @@ const snow = (weather) => {
     }
 }
 
-
+// Rendering of the weather properties
 
 
 const WeatherDisplay = (props) => {
-    if (props.weather !== null) {
+    if (props.weather) {
         return (
             <div>
                 <h3 className="ui horizontal blue divider header">
@@ -116,8 +119,6 @@ const WeatherDisplay = (props) => {
         return (
             <h4 className="ui horizontal blue divider header">
                 <div className="ui loading segment">
-                    <p></p>
-                    <p></p>
                 </div>
             </h4>
         );

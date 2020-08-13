@@ -13,8 +13,7 @@ class App extends React.Component {
     }
 
     weatherRequest = async (latitude, longitude) => {
-        const response = await openweather.get(`weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
-        return response;
+        return await openweather.get(`weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`);
     };
 
     getData = (data) => {
@@ -24,17 +23,17 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <div className="ui sizer vertical segment">
+                <div className="ui sizer segment">
                     <div className="ui huge center blue aligned header">
                         Weather App
                     </div>
                 </div>
                 <div className="ui center aligned container">
                     <div className="ui blue segment">
-                        <LocationFinder weatherRequest={this.weatherRequest} getData={this.getData} />
+                        <LocationFinder weatherRequest={this.weatherRequest} getData={this.getData}/>
                     </div>
                     <div className="ui blue segment">
-                        <WeatherDisplay weather={this.state.data} />
+                        <WeatherDisplay weather={this.state.data}/>
                     </div>
 
                 </div>
