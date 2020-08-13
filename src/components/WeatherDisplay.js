@@ -50,7 +50,6 @@ const snow = (weather) => {
 
 
 const WeatherDisplay = (props) => {
-    console.log(props);
     if (props.weather !== null) {
         return (
             <div>
