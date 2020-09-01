@@ -6,3 +6,5 @@ To start the project on you machine, in the project directory, simply run:
 ### `npm start`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+[![image.png](https://i.postimg.cc/dDcTMFFG/image.png)](https://postimg.cc/1VMz6Lfz)
